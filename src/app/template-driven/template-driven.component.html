@@ -1,0 +1,93 @@
+<div class="container my-5">
+    <form #validationForm="ngForm" (ngSubmit)="onSubmit(validationForm)">
+
+        <div class="form-group m-3">
+            <label for="username">Username</label>
+            <input type="email" class="form-control m-2"
+                [ngClass]="{'border border-danger': usernameField.touched && !usernameField.valid}" id="username"
+                name="username" #usernameField="ngModel" [(ngModel)]="username" placeholder="Enter email" required>
+            <div *ngIf="usernameField.touched && usernameField.invalid && usernameField.errors?.required"
+                class="text-danger">
+                Username is required</div>
+        </div>
+
+
+
+        <div class="form-group m-3">
+            <label for="email">Email address</label>
+            <input type="email" class="form-control m-2"
+                [ngClass]="{'border border-danger': emailField.touched && !emailField.valid}" id="email"
+                aria-describedby="emailHelp" name="email" #emailField="ngModel" [(ngModel)]="email"
+                placeholder="Enter email" required>
+            <div *ngIf="emailField.touched && emailField.invalid && emailField.errors?.required" class="text-danger">
+                Email is required</div>
+        </div>
+
+
+        <div class="form-group m-3">
+            <label for="password">Password</label>
+            <input type="password" class="form-control m-2"
+                [ngClass]="{'border border-danger': passwordField.touched && !passwordField.valid}" id="password"
+                placeholder="Password" name="password" [(ngModel)]="password" #passwordField="ngModel" minlength="8"
+                required>
+            <div *ngIf="passwordField.touched && passwordField.invalid" class="text-danger">Password is not valid</div>
+        </div>
+
+
+        <div class="form-group m-3">
+            <label for="experience">Experience</label>
+            <select name="title" class="form-control m-2" [(ngModel)]="select" #experience="ngModel" id="experience"
+                [ngClass]="{ 'is-invalid':experience.touched && experience.invalid }" required>
+                <option *ngFor=" let item of selectOptionsValues" [value]="item">{{item + ' yr'}}</option>
+            </select>
+            <div *ngIf=" experience.invalid" class="invalid-feedback">
+                <div *ngIf="experience.touched && experience.errors.required">Experience is required</div>
+            </div>
+        </div>
+
+
+        <div class="form-group m-3">
+            <div class="form-check form-check-inline">
+                <input class="form-check-input m-1" type="checkbox" id="feature" value="true" name="feature"
+                    [ngClass]="{'border border-danger': featured.touched && featured.invalid}" #featured="ngModel"
+                    [(ngModel)]="isFeatured" required>
+                <label class="form-check-label" for="feature">Yes,Ofcourse</label>
+            </div>
+            <div *ngIf="featured.touched && featured.invalid" class="text-danger">Feature is invalid</div>
+        </div>
+
+
+        <div class="form-group m-3">
+            <div class="form-check form-check-inline">
+                <input type="radio" value="male" name="gender" [(ngModel)]='gender' required
+                    #genderValude="ngModel"> Male
+            </div>
+            <div class="form-check form-check-inline">
+                <input type="radio" value="female" name="gender" [(ngModel)]='gender' required #genderValude="ngModel">
+                 Female
+            </div>
+            <div *ngIf="genderValude.invalid" class="text-danger">Gender is invalid</div>
+        </div>
+
+
+        <div class="form-group m-3">
+            <label for="description">Description</label>
+            <textarea class="form-control m-2" id="description" name="description" [(ngModel)]="description"
+                #descriptionField="ngModel" rows="3" required
+                [ngClass]="{'border border-danger': descriptionField.touched &&  descriptionField.invalid}"></textarea>
+            <div *ngIf="descriptionField.touched && descriptionField.invalid" class="text-danger">Description is invalid
+            </div>
+        </div>
+
+
+        <div class="form-group m-3">
+            <label for="fileUpload ">Uplaod CV</label>
+            <input type="file" class="form-control-file m-2" id="fileUpload" name="uploadFile" [(ngModel)]="uploadFile"
+                #fileUpload="ngModel" required>
+            <div *ngIf="fileUpload.touched && fileUpload.invalid" class="text-danger">File is invalid</div>
+        </div>
+
+        <button type="submit" class="btn btn-primary m-3" [disabled]="!validationForm.form.valid">Submit</button>
+
+    </form>
+</div>
