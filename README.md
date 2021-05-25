@@ -5,9 +5,9 @@ Angular provides two different approaches to handling user input through forms: 
 - **Template Driven Form**
   - In this kind of form, we can write the forms in Angular template syntax with form syntax directives.
 - **Reactive Form**
-  - Reactive forms provide a model-driven approach to handling form inputs whose values change over the time.
+  - Reactive forms provide a model-driven approach to handling form inputs whose values change over time.
 
-- In this application we are using `Bootstrap 5` for designing forms.
+- In this application, we are using `Bootstrap 5` for designing forms.
 
 ### 1 Template Driven Form
 
@@ -47,7 +47,7 @@ export class AppModule { }
 
 </form>
 ```
-- In above snippet we are declaring the form with name `validationForm` and to bind form element in template driven we have to assign a name to our form element and also give a directive `ngModel` to that same form element.
+- In the above snippet, we are declaring the form with the name `validationForm` and to bind form element in template-driven we have to assign a name to our form element and also give a directive `ngModel` to that same form element.
 
 #### 1.2 Validate Form
 
@@ -242,14 +242,14 @@ generateForm() {
 
 </form>
 ```
-  - In above snippet we are declaring the form with name `reactiveForm` and to bind form element in reactive we have to assign `formControlName` to that form element.
+  - In the above snippet, we are declaring the form with the name `reactiveForm` and to bind the form element in reactive we have to assign `formControlName` to that form element.
 
 #### 2.2 Validate Form
-To validate form we can use property valid of **FormGroup** which give us the boolean value either form is valid or not as same as template-driven approach.
+To validate the form we can use property valid of **FormGroup** which gives us the boolean value either the form is valid or not as same as a template-driven approach.
 ```js
 reactiveForm.valid
 ```
-To ensure validity of any perticular field we can use the properties of form-control of that field as given below :
+To ensure the validity of any particular field we can use the properties of form-control of that field as given below :
 ```js 
 formControlName="username"
 ```
