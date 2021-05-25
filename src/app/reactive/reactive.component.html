@@ -1,0 +1,114 @@
+<div class="container">
+
+    <form [formGroup]="reactiveForm" (ngSubmit)="submitForm()">
+
+        <div class="form-group m-3">
+            <label for="username">Username</label>
+            <input type="text" id="username" class="form-control" formControlName="username"
+                [ngClass]="{'border border-danger': formSubmitted && reactiveForm.controls.username.errors }">
+            <span class="text-danger" *ngIf="formSubmitted && reactiveForm.controls.username.errors ">Username is not
+                valid</span>
+        </div>
+
+
+        <div class="form-group m-3">
+            <label for="email">Email</label>
+            <input type="email" id="email" class="form-control" formControlName="email"
+                [ngClass]="{'border border-danger': formSubmitted && reactiveForm.controls.email.errors }">
+            <div *ngIf="reactiveForm.controls.email.errors">
+                <span class="text-danger" *ngIf="formSubmitted && reactiveForm.controls.email.errors.required">Email is
+                    required</span>
+                <span class="text-danger"
+                    *ngIf="formSubmitted && reactiveForm.controls.email.errors && !reactiveForm.controls.email.errors.required">Email
+                    is not valid</span>
+            </div>
+        </div>
+
+
+        <div class="form-group m-3">
+            <label for="password">Password</label>
+            <input type="password" id="password" class="form-control" formControlName="password"
+                [ngClass]="{'border border-danger': formSubmitted && reactiveForm.controls.password.errors }">
+            <div *ngIf="reactiveForm.controls.password.errors">
+                <span class="text-danger"
+                    *ngIf="formSubmitted && reactiveForm.controls.password.errors.required">Password
+                    is required</span>
+                <span class="text-danger"
+                    *ngIf="formSubmitted && reactiveForm.controls.password.errors.minlength">Password
+                    length is not
+                    valid</span>
+            </div>
+        </div>
+
+
+        <div class="form-group m-3">
+            <label for="experience">Experience</label>
+            <select formControlName="experienceYear" class="form-control"
+                [ngClass]="{'border border-danger': formSubmitted && reactiveForm.controls.experienceYear.errors }">
+                <option *ngFor="let item of selectOptionsValues" [ngValue]="item">{{ item + ' yr' }}</option>
+            </select>
+            <div *ngIf="reactiveForm.controls.experienceYear.errors">
+                <span class="text-danger"
+                    *ngIf="formSubmitted && reactiveForm.controls.experienceYear.errors.required">Experience is
+                    required</span>
+            </div>
+        </div>
+
+        <div class="form-group m-3">
+            <div class="form-check form-check-inline">
+                <input type="checkbox" id="feature" class="form-check-input" formControlName="isFeatured"
+                    [ngClass]="{'border border-danger': formSubmitted && reactiveForm.controls.isFeatured.errors }">
+                <label class="form-check-label" for="feature">Yes,Ofcourse</label>
+            </div>
+            <span class="text-danger" *ngIf=" formSubmitted && reactiveForm.controls.isFeatured.errors">Experience is
+                required</span>
+        </div>
+
+
+        <div class="form-group m-3">
+            <div class="form-check form-check-inline">
+                <input id="male" type="radio" value="male" formControlName="gender">
+                <label for="male" class="mx-2">Male</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input id="female" type="radio" value="female" formControlName="gender">
+                <label for="female" class="mx-2">Female</label>
+            </div>
+            <div *ngIf="reactiveForm.controls.gender.errors">
+                <span class="text-danger" *ngIf="formSubmitted && reactiveForm.controls.gender.errors.required">Gender
+                    is
+                    required</span>
+            </div>
+        </div>
+
+
+
+
+        <div class="form-group m-3">
+            <label for="description">Description</label>
+            <textarea class="form-control m-2" id="description" name="description" formControlName="description"
+                [ngClass]="{'border border-danger': formSubmitted && reactiveForm.controls.description.errors }"
+                rows="3"></textarea>
+            <div *ngIf="reactiveForm.controls.description.errors">
+                <span class="text-danger"
+                    *ngIf="formSubmitted && reactiveForm.controls.description.errors.required">Description is
+                    required</span>
+            </div>
+        </div>
+
+
+        <div class="form-group m-3">
+            <label for="fileUpload ">Uplaod CV</label>
+            <input type="file" class="form-control-file m-2" id="fileUpload" name="uploadFile"
+                formControlName="fileUpload"
+                [ngClass]="{'border border-danger': formSubmitted && reactiveForm.controls.fileUpload.errors }">
+            <div *ngIf="reactiveForm.controls.fileUpload.errors">
+                <span class="text-danger"
+                    *ngIf="formSubmitted && reactiveForm.controls.fileUpload.errors.required">FileUpload is
+                    required</span>
+            </div>
+        </div>
+        <button type="submit">submit</button>
+
+    </form>
+</div>

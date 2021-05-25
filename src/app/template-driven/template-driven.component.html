@@ -38,6 +38,7 @@
             <label for="experience">Experience</label>
             <select name="title" class="form-control m-2" [(ngModel)]="select" #experience="ngModel" id="experience"
                 [ngClass]="{ 'is-invalid':experience.touched && experience.invalid }" required>
+                <option disabled selected>Choose your Experience</option>
                 <option *ngFor=" let item of selectOptionsValues" [value]="item">{{item + ' yr'}}</option>
             </select>
             <div *ngIf=" experience.invalid" class="invalid-feedback">
@@ -59,12 +60,12 @@
 
         <div class="form-group m-3">
             <div class="form-check form-check-inline">
-                <input type="radio" value="male" name="gender" [(ngModel)]='gender' required
-                    #genderValude="ngModel"> Male
+                <input type="radio" value="male" name="gender" [(ngModel)]='gender' required #genderValude="ngModel">
+                Male
             </div>
             <div class="form-check form-check-inline">
                 <input type="radio" value="female" name="gender" [(ngModel)]='gender' required #genderValude="ngModel">
-                 Female
+                Female
             </div>
             <div *ngIf="genderValude.invalid" class="text-danger">Gender is invalid</div>
         </div>
