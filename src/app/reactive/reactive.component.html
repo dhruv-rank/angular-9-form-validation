@@ -6,8 +6,15 @@
             <label for="username">Username</label>
             <input type="text" id="username" class="form-control" formControlName="username"
                 [ngClass]="{'border border-danger': formSubmitted && reactiveForm.controls.username.errors }">
-            <span class="text-danger" *ngIf="formSubmitted && reactiveForm.controls.username.errors ">Username is not
-                valid</span>
+            <div *ngIf="reactiveForm.controls.username.errors">
+                <span class="text-danger"
+                    *ngIf="formSubmitted  && reactiveForm.controls.username.errors.required ">Username is
+                    reuired</span>
+                <span class="text-danger"
+                    *ngIf="formSubmitted && !reactiveForm.controls.username.valid &&  !reactiveForm.controls.username.errors.required ">Username
+                    is not
+                    valid</span>
+            </div>
         </div>
 
 
@@ -108,7 +115,7 @@
                     required</span>
             </div>
         </div>
-        <button type="submit">submit</button>
+        <button type="submit" [disabled]="!reactiveForm.valid">submit</button>
 
     </form>
 </div>
